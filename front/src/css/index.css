@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Funnel+Display:wght@300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import 'tailwindcss';
 
 @theme {
   --font-funnel: 'Funnel Display', sans-serif;
+  --font-monserrat: 'Montserrat', sans-serif;
+  --font-bitter: 'Bitter', sans-serif;
+  --font-opensans: 'Open Sans', 'sans-serif'
 }
 
 @layer base

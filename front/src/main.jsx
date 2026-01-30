@@ -5,15 +5,14 @@ import App from './App.jsx'
 import { Navigate } from 'react-router'
 import { Link } from 'react-router'
 import cvExample from './assets/cv-example.webp'
+import { Login } from './Login.jsx'
 
 const Dashboard = () =>
 {
 
 }
 
-const Login = () => {
-  return (<div>login please</div>)
-}
+
 
 const Signup = () => {
   return (<div>Signup please</div>)
@@ -22,17 +21,16 @@ const Signup = () => {
 const Hero = () => 
 {
   return (
-    <div className="flex sm:flex-row flex-col
-    font-funnel
-    sm:items-start    
-    items-center
-    justify-center">
+    <div className="
+    flex sm:flex-row flex-col
+    font-funnel 
+    sm:items-start items-center justify-center">
 
       <div className="flex flex-col gap-2 sm:mt-20">
-        <h2 className='sm:text-3xl text-xl'>Tired of manual search?</h2>
-        <h2 className='sm:text-xl text-lg'>Upload your company docs.</h2>
+        <h2 className='sm:text-3xl text-xl font-bold'>Tired of manual search?</h2>
+        <h2 className='sm:text-xl text-lg font-semibold'>Upload your company docs.</h2>
         <h6 className='sm:text-lg text-sm'>and we do the search for you.</h6>
-        <p className='sm:text-xs text-xs'>totally secure, no worries</p>
+        <p className='sm:text-xs text-xs font-light italic'>totally secure, no worries</p>
 
         <Link
           to="/dashboard"
