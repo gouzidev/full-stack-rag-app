@@ -6,12 +6,9 @@ import { Navigate } from 'react-router'
 import { Link } from 'react-router'
 import cvExample from './assets/cv-example.webp'
 import { Login } from './Login.jsx'
+import { Dashboard } from './Dashboard.jsx'
 
-const Dashboard = () =>
-{
-
-}
-
+import { Outlet } from 'react-router'
 
 
 const Signup = () => {
@@ -51,7 +48,8 @@ const Hero = () =>
 }
 import { BrowserRouter, Route, Routes } from "react-router";
 
-const PrivateWrapper = ({ isAuthenticated = false  }) => {
+const PrivateWrapper = () => {
+  const isAuthenticated = localStorage.getItem('token');
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
@@ -62,10 +60,11 @@ createRoot(document.getElementById('root')).render(
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route index element={<Hero />} />
+          <Route element={<PrivateWrapper />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
       </Route>
-      <Route element={<PrivateWrapper />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-    </Route>
+   
     </Routes>
     
     </BrowserRouter>,

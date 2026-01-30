@@ -47,7 +47,12 @@ app.post('/login', (req, res) =>
     console.log(200)
     console.log("logged in successfully")
     res.cookie('token', "123");
-    return res.status(200).send({isError: false, msg: "logged in successfully"})
+    return res.status(200).send({isError: false, msg: "logged in successfully", data: {"token": "123"}})
+})
+
+app.post('file-upload', (req, res) =>
+{
+    if ()
 })
 
 app.listen(port, () => {

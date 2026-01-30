@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { getEmptyChar } from "./App"
+import { useNavigate } from "react-router"
 export const Login = () =>
 {
+    const navigate = useNavigate();
     const validateLoginData = (username, password) => 
     {
         username = username.trim()
@@ -51,6 +53,11 @@ export const Login = () =>
             let data = await res.json();
             setIsError(data.isError);
             setMsg(data.msg);
+            if (data.data && data.data.token)
+            {
+                navigate("/dashboard",  { replace: true })
+                localStorage.setItem('token', data.data.token)
+            }
         }
     }
     const [username, setUsername] = useState("");
