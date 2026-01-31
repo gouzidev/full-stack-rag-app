@@ -26,15 +26,14 @@ export const Dashboard = () =>
 				body: formData,
 			})
 			console.log(res)
+			console.log(res.ok)
 			if (res.ok)
 			{
 				let data = await res.json();
+				console.log("data:", data);
 			}
 			else
 				throw new Error("Upload failed");
-
-			const data = await res.json();
-			console.log("Uploaded:", data);
 		}
 		 catch (err) {
 			console.error(err);

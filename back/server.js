@@ -7,7 +7,7 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/upload')
+    cb(null, './upload')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
@@ -66,7 +66,12 @@ app.post('/login', (req, res) =>
 app.post('/file-upload', upload.single('file'),(req, res) =>
 {
     console.log(req.file)
-    res.status(201).send({isError: false, msg: "file uploaded succesfully"})
+    res.status(201).json({isError: false, msg: "file uploaded succesfully"})
+
+    const { ChromaClient } = require("chromadb");
+    const client = new ChromaClient();
+
+    
 })
 
 app.listen(port, () => {
