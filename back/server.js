@@ -2,6 +2,19 @@ const express = require('express')
 const app = express()
 const port = 3000
 const cors = require('cors')
+const multer = require('multer')
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '/upload')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage })
 
 app.use(cors());
 
@@ -50,9 +63,10 @@ app.post('/login', (req, res) =>
     return res.status(200).send({isError: false, msg: "logged in successfully", data: {"token": "123"}})
 })
 
-app.post('file-upload', (req, res) =>
+app.post('/file-upload', upload.single('file'),(req, res) =>
 {
-    if ()
+    console.log(req.file)
+    res.status(201).send({isError: false, msg: "file uploaded succesfully"})
 })
 
 app.listen(port, () => {

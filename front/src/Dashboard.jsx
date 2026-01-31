@@ -9,15 +9,37 @@ export const Dashboard = () =>
 	const onFileChange = (event) => {
 		setSelectedFile(event.target.files[0]);
 	};
-	const onFileUpload = () => {
-		const formData = new FormData();
-		formData.append(
-			"file",
-			selectedFile,
-			selectedFile.name
-		);
-		console.log(selectedFile);
-		axios.post("upload-file", formData);
+	const onFileUpload = async () => {
+		try
+		{
+			const formData = new FormData();
+			formData.append(
+				"file",
+				selectedFile,
+				selectedFile.name
+			);
+			console.log(selectedFile);
+
+			const res = await fetch('http://localhost:3000/file-upload',
+			{
+				method: 'POST',
+				body: formData,
+			})
+			console.log(res)
+			if (res.ok)
+			{
+				let data = await res.json();
+			}
+			else
+				throw new Error("Upload failed");
+
+			const data = await res.json();
+			console.log("Uploaded:", data);
+		}
+		 catch (err) {
+			console.error(err);
+		}
+		
 	};
 	const fileData = () => {
 		if (selectedFile) {
